@@ -1,6 +1,7 @@
 package framework
 
 import (
+	//"github.com/zhangel/go-framework.git"
 	"log"
 	"sync"
 )
@@ -14,7 +15,8 @@ func init() {
 }
 
 func Finalize() {
-
+	log.Printf("callback exec")
+	//lifecycle.LifeCycle.Finalize()
 }
 
 func Init() func() {
