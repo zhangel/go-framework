@@ -1,7 +1,7 @@
 package framework
 
 import (
-	//"github.com/zhangel/go-framework.git"
+	internal_config "github.com/zhangel/go-framework/internal/config"
 	"log"
 	"sync"
 )
@@ -22,12 +22,13 @@ func Finalize() {
 
 func Init(opt ...Option) func() {
 	once.Do(func() {
-		opts := Options{}
+		opts := &Options{}
 		for _, o := range append(presetOpt, opt...) {
-			if err := o(opt); err != nil {
+			if err := o(opts); err != nil {
 				log.Fatal("[LOAD_ERROR]", opt)
 			}
 		}
+
 		log.Printf("opts=%+v\n", opts)
 
 	})

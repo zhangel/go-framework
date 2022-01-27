@@ -1,8 +1,9 @@
 package config
 
 import (
-	"fmt"
+	//	"fmt"
 	"github.com/zhangel/go-framework/config/internal"
 )
 
 type Source internal.Source
+type Config internal.Config
