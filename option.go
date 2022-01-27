@@ -6,12 +6,13 @@ import (
 )
 
 type Options struct {
-	defaultConfigSource []config.Source
-	finalizeTimeout     time.Duration
-	compactUsage        bool
-	flagsToShow         []string
-	flagsToHide         []string
-	beforeConfigParser  []func()
+	defaultConfigSource  []config.Source
+	configPreparer       func(config.Config) (config.Config, error)
+	finalizeTimeout      time.Duration
+	compactUsage         bool
+	flagsToShow          []string
+	flagsToHide          []string
+	beforeConfigPreparer []func()
 }
 
 type Option func(*Options) error

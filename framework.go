@@ -28,9 +28,10 @@ func Init(opt ...Option) func() {
 				log.Fatal("[LOAD_ERROR]", opt)
 			}
 		}
-
-		log.Printf("opts=%+v\n", opts)
-
+		internal_config.PrepareConfigs(opts.beforeConfigPreparer, opts.configPreparer,
+			opts.defaultConfigSource, opts.compactUsage,
+			opts.flagsToShow, opts.flagsToHide)
+		log.Printf("%+v\n", opts.finalizeTimeout)
 	})
 	return Finalize
 }
