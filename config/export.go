@@ -1,7 +1,6 @@
 package config
 
 import (
-	//	"fmt"
 	"github.com/zhangel/go-framework/config/internal"
 	"sync"
 )
@@ -14,8 +13,12 @@ var (
 	mutex         sync.RWMutex
 )
 
-func GlobalConfig() {
-	mutex.Rlock()
+func GlobalConfig() Config {
+	mutex.RLock()
 	defer mutex.RUnlock()
 	return defaultConfig
+}
+
+func Int(key string) int {
+	return GlobalConfig().Int(key)
 }
