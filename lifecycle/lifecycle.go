@@ -71,6 +71,15 @@ func (l *lifeCycle) Finalize() {
 	})
 }
 
+func (l *lifeCycle) HookFinalize(hook func(ctx context.Context), opt ...Option) {
+	l.mu.Lock()
+	defer l.mu.Unlock()
+	l.finalizeHooks = append(l.finalizeHooks, hookFunc{
+		fn:   hook,
+		opts: generateOptions(opt...),
+	})
+}
+
 func (h *hookFunc) run(ctx context.Context) {
 	invoker := func() chan struct{} {
 		done := make(chan struct{}, 1)

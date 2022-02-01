@@ -29,6 +29,10 @@ type SourceWrapper struct {
 	cancel       func()
 }
 
+type SourceIgnoreNamespace interface {
+	IgnoreNamespace()
+}
+
 func (s *SyncWrapper) Sync() (map[string]string, error) {
 	result := make(map[string]string, 0)
 	return result, nil
@@ -42,3 +46,19 @@ func (s *SourceWrapper) Get(key string) (string, bool) {
 		return "", false
 	}
 }
+
+func (s *SourceWrapper) IgnoreNamespace() bool {
+	_, ok := s.source.(SourceIgnoreNamespace)
+	return ok
+}
+
+/*
+func (s *SourceWrapper) Get(key string) (string, bool) {
+	val, ok := s.cache.Load(key)
+	if ok {
+		return val.(string), true
+	} else {
+		return "", false
+	}
+}
+*/

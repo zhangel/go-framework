@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/zhangel/go-framework/uri"
 	"log"
-	"sort"
 	"strings"
 	"sync"
 )
@@ -33,6 +32,7 @@ type PluginInfo struct {
 
 func PopulatePluginFlags() {
 	pluginOnce.Do(func() {
+		fmt.Printf("cccccccccccccccccccc\n")
 		for pluginType, plugins := range AllPlugins {
 			fmt.Printf("pluginType=%+v\n", pluginType)
 			if len(plugins.pluginInfos) == 0 {
@@ -54,43 +54,38 @@ func PopulatePluginFlags() {
 					log.Fatalf("[ERROR] Register uriParser for plugin type %q failed, err = %v",
 						pluginType.Name, err)
 				}
-				uris := strings.Split(plugins.uriParser.String(), "\n")
-				var deprecatedPlugins []string
-				for _, plugin := range plugins.pluginInfos {
-					if plugin.Deprecated {
-						deprecatedPlugins = append(deprecatedPlugins, strings.ToLower(plugin.Name))
-					}
-				}
-				var availableUris []string
-				for _, pluginUri := range uris {
-					deprecated := false
-					for _, deprecatedPlugin := range deprecatedPlugins {
-						if strings.HasPrefix(pluginUri, deprecatedPlugin+":") {
-							deprecated = true
-							break
-						}
-					}
-
-					if !deprecated {
-						availableUris = append(availableUris, pluginUri)
-					}
-				}
-				Flags("",
-					Flag{Name: pluginType.Name, DefaultValue: "", Description: fmt.Sprintf("U    ri of %s plugin instance. optionals:%s", pluginType.Name, strings.Replace("\n"+strings.Join(availableUris, "\n"), "\n", "\n- ", -1)), pluginTypeFlag: true})
-
 			}
-			sort.Strings(pluginNames)
+			uris := strings.Split(plugins.uriParser.String(), "\n")
+			var deprecatedPlugins []string
+			for _, plugin := range plugins.pluginInfos {
+				if plugin.Deprecated {
+					deprecatedPlugins = append(deprecatedPlugins, strings.ToLower(plugin.Name))
+				}
+			}
+			var availableUris []string
+			for _, pluginUri := range uris {
+				deprecated := false
+				for _, deprecatedPlugin := range deprecatedPlugins {
+					if strings.HasPrefix(pluginUri, deprecatedPlugin+":") {
+						deprecated = true
+						break
+					}
+				}
 
+				if !deprecated {
+					availableUris = append(availableUris, pluginUri)
+				}
+			}
 			Flags("",
-				Flag{Name: PluginTypeFlag(pluginType),
-					DefaultValue: defaultPlugin,
-					Description:  fmt.Sprintf("Specify a %s plugin. optionals: %s.", pluginType.Name, strings.Join(pluginNames, ", ")), pluginTypeFlag: true},
-			)
+				Flag{Name: pluginType.Name, DefaultValue: "", Description: fmt.Sprintf("U    ri of %s plugin instance. optionals:%s", pluginType.Name, strings.Replace("\n"+strings.Join(availableUris, "\n"), "\n", "\n- ", -1)), pluginTypeFlag: true})
 
+			//sort.Strings(pluginNames)
+
+			//	Flags("",
+			//	Flag{Name: PluginTypeFlag(pluginType), DefaultValue: defaultPlugin, Description: fm    t.Sprintf("Specify a %s plugin. optionals: %s.", pluginType.Name, strings.Join(pluginNames, ", ")),     pluginTypeFlag: true},
+			//	)
+
+			fmt.Printf("row debug\n")
 		}
 	})
-}
-
-func PluginTypeFlag(pluginType PluginType) string {
-	return pluginType.Name + ".type"
 }
