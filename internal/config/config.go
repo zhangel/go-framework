@@ -2,7 +2,7 @@ package config
 
 import (
 	"context"
-	"fmt"
+	//"fmt"
 	"github.com/zhangel/go-framework/config"
 	"github.com/zhangel/go-framework/di"
 	"github.com/zhangel/go-framework/internal/declare"
@@ -50,14 +50,12 @@ func PrepareConfigs(beforeConfigPrepareHook []func(),
 	}
 	for _, source := range configSources {
 		if modifiableSource, ok := source.(declare.ModifiableConfigSource); ok {
-			fmt.Printf("modifialeSource=%+v\n", modifiableSource)
-			//populateFlags(source, compactUsage, flagsToShow, flagsToHide)
+			populateFlags(modifiableSource, compactUsage, flagsToShow, flagsToHide)
 		}
 	}
 	if len(configSources) == 0 {
 		populateFlags(nil, compactUsage, flagsToShow, flagsToHide)
 	}
-	fmt.Printf("debug\n")
 }
 
 func populateFlags(source declare.ModifiableConfigSource, compactUsage bool,
@@ -68,5 +66,4 @@ func populateFlags(source declare.ModifiableConfigSource, compactUsage bool,
 	} else {
 		declare.PopulateAllFlags(source, flagsToShow, flagsToHide)
 	}
-	fmt.Printf("xxxx\n")
 }

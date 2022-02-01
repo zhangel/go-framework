@@ -84,7 +84,7 @@ func (h *hookFunc) run(ctx context.Context) {
 	invoker := func() chan struct{} {
 		done := make(chan struct{}, 1)
 		go func() {
-			utils.PrintMethods(context.Background())
+			//utils.PrintMethods(context.Background())
 			//subgoroutine controll
 			workerCtx, cancle := context.WithCancel(ctx)
 			defer cancle()
@@ -107,7 +107,6 @@ func (h *hookFunc) run(ctx context.Context) {
 				log.Printf("Invalid LifeCycle Hook func\n")
 				return
 			}
-			log.Printf("fn.NumOut=%+v\n", fnType.NumOut)
 		}()
 		return done
 	}

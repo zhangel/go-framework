@@ -34,7 +34,6 @@ type PluginInfo struct {
 func PopulatePluginFlags() {
 	pluginOnce.Do(func() {
 		for pluginType, plugins := range AllPlugins {
-			fmt.Printf("pluginType=%+v\n", pluginType)
 			if len(plugins.pluginInfos) == 0 {
 				continue
 			}

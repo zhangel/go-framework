@@ -151,13 +151,17 @@ func PopulateAllFlags(source ModifiableConfigSource, flagsToShow, flagsToHide []
 }
 
 func setDefaultValue(source ModifiableConfigSource, flagName string, defaultVal interface{}) {
+
 	if source == nil {
 		return
 	}
 
-	if _, ok := source.Get(flagName); ok {
-		return
-	}
+	//if
+	//res, ok := source.Get(flagName)
+	//fmt.Printf("res=%v|ok=%v\n", res, ok)
+	//; ok {
+	//		return
+	//	}
 
 	source.Put(flagName, internal.Stringify(defaultVal))
 }

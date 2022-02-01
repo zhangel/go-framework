@@ -49,10 +49,6 @@ func (s *_Entry) WithConfig(config config.Config) logger.Logger {
 	if config == nil {
 		return s
 	}
-	/*
-		e := newEntry(s.logger)
-		fmt.Printf("e=%+v\n", e)
-	*/
 	return nil
 }
 
