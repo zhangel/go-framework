@@ -2,8 +2,11 @@ package internal
 
 import (
 	"github.com/zhangel/go-framework/config/watcher"
+	"github.com/zhangel/go-framework/declare"
 	"time"
 )
+
+var ConfigPlugin = declare.PluginType{Name: "config"}
 
 type Value interface {
 	Bool(key string) bool
