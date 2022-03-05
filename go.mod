@@ -14,10 +14,3 @@ require (
 )
 
 replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
-
-retract (
-	v1.0.262 // Http header issue
-	v1.0.261 // Http header issue
-	v1.0.260 // Http header issue
-	v1.0.259 // Http header issue
-)
