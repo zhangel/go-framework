@@ -3,9 +3,10 @@ package internal
 import (
 	"crypto/md5"
 	"encoding/hex"
-	"github.com/zhangel/go-framework/config/watcher"
 	"strings"
 	"sync"
+
+	"github.com/zhangel/go-framework/config/watcher"
 )
 
 type ValueGetter interface {

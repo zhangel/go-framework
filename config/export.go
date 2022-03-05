@@ -1,8 +1,11 @@
 package config
 
 import (
-	"github.com/zhangel/go-framework/config/internal"
 	"sync"
+	"time"
+
+	"github.com/zhangel/go-framework/config/internal"
+	"github.com/zhangel/go-framework/config/watcher"
 )
 
 type Source internal.Source

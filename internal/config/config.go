@@ -3,11 +3,17 @@ package config
 import (
 	"context"
 	"fmt"
+	"log"
+	"os"
+	"strings"
+
 	"github.com/zhangel/go-framework/config"
 	"github.com/zhangel/go-framework/config_plugins"
 	"github.com/zhangel/go-framework/di"
 	"github.com/zhangel/go-framework/internal/declare"
 	"github.com/zhangel/go-framework/lifecycle"
+	"github.com/zhangel/go-framework/plugin"
+	"github.com/zhangel/go-framework/uri"
 )
 
 var (

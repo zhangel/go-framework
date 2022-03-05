@@ -19,6 +19,26 @@ type pluginFlagInfo struct {
 
 type nameSpaceStrings []string
 
+func (p nameSpaceStrings) Len() int { return len(p) }
+func (p nameSpaceStrings) Less(i, j int) bool {
+	is := strings.Split(p[i], ".")
+	js := strings.Split(p[j], ".")
+
+	if len(is) <= 2 || len(js) <= 2 {
+		if len(is) == len(js) {
+			return p[i] < p[j]
+		} else {
+			return len(is) < len(js)
+		}
+	}
+
+	return p[i] < p[j]
+}
+
+func (p nameSpaceStrings) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
+
+func sortNameSpaceStrings(a []string) { sort.Sort(nameSpaceStrings(a)) }
+
 func ShowUsage(flagsToShow, flagsToHide []string, includeDeprecated bool) {
 	_, _ = fmt.Fprintf(os.Stderr, "Usage of %s:\n\n", os.Args[0])
 
@@ -60,6 +80,26 @@ func ShowUsage(flagsToShow, flagsToHide []string, includeDeprecated bool) {
 	printPluginSelector(pluginSelector)
 	printGlobalFlags(globalFlags)
 	printPluginFlags(pluginFlags)
+}
+
+func isFlagShow(flagName string, flagsToShow, flagsToHide []string) bool {
+	if len(flagsToShow) == 0 && len(flagsToHide) == 0 {
+		return true
+	} else if len(flagsToShow) > 0 {
+		for _, f := range flagsToShow {
+			if matched, err := regexp.MatchString(f, flagName); err != nil || matched {
+				return true
+			}
+		}
+		return false
+	} else {
+		for _, f := range flagsToHide {
+			if matched, err := regexp.MatchString(f, flagName); err != nil || matched {
+				return false
+			}
+		}
+		return true
+	}
 }
 
 func printCustomFlags(flags []string) {
@@ -122,8 +162,6 @@ func printGlobalFlags(flags map[string][]string) {
 	}
 }
 
-func sortNameSpaceStrings(a []string) { sort.Sort(nameSpaceStrings(a)) }
-
 func printPluginFlags(flags map[pluginFlagInfo][]string) {
 	var ns []pluginFlagInfo
 	for k := range flags {
@@ -152,6 +190,23 @@ func printPluginFlags(flags map[pluginFlagInfo][]string) {
 
 		_, _ = fmt.Fprint(os.Stderr, "\n")
 	}
+}
+
+func capitalize(str string) string {
+	for i, v := range str {
+		return string(unicode.ToUpper(v)) + str[i+1:]
+	}
+	return ""
+}
+
+func flagName(ns, name string) string {
+	var flagName string
+	if ns != "" && !strings.HasPrefix(name, ns+".") {
+		flagName = ns + "." + name
+	} else {
+		flagName = name
+	}
+	return strings.ToLower(flagName)
 }
 
 func printFlag(f *flag.Flag) {
@@ -184,23 +239,6 @@ func printFlag(f *flag.Flag) {
 	_, _ = fmt.Fprint(os.Stderr, s, "\n")
 }
 
-func capitalize(str string) string {
-	for i, v := range str {
-		return string(unicode.ToUpper(v)) + str[i+1:]
-	}
-	return ""
-}
-
-func flagName(ns, name string) string {
-	var flagName string
-	if ns != "" && !strings.HasPrefix(name, ns+".") {
-		flagName = ns + "." + name
-	} else {
-		flagName = name
-	}
-	return strings.ToLower(flagName)
-}
-
 func isZeroValue(f *flag.Flag, value string) bool {
 	typ := reflect.TypeOf(f.Value)
 	var z reflect.Value
@@ -215,40 +253,3 @@ func isZeroValue(f *flag.Flag, value string) bool {
 	}
 	return value == z.Interface().(flag.Value).String()
 }
-
-func isFlagShow(flagName string, flagsToShow, flagsToHide []string) bool {
-	if len(flagsToShow) == 0 && len(flagsToHide) == 0 {
-		return true
-	} else if len(flagsToShow) > 0 {
-		for _, f := range flagsToShow {
-			if matched, err := regexp.MatchString(f, flagName); err != nil || matched {
-				return true
-			}
-		}
-		return false
-	} else {
-		for _, f := range flagsToHide {
-			if matched, err := regexp.MatchString(f, flagName); err != nil || matched {
-				return false
-			}
-		}
-		return true
-	}
-}
-
-func (p nameSpaceStrings) Len() int { return len(p) }
-func (p nameSpaceStrings) Less(i, j int) bool {
-	is := strings.Split(p[i], ".")
-	js := strings.Split(p[j], ".")
-
-	if len(is) <= 2 || len(js) <= 2 {
-		if len(is) == len(js) {
-			return p[i] < p[j]
-		} else {
-			return len(is) < len(js)
-		}
-	}
-
-	return p[i] < p[j]
-}
-func (p nameSpaceStrings) Swap(i, j int) { p[i], p[j] = p[j], p[i] }

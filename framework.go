@@ -2,17 +2,34 @@ package framework
 
 import (
 	"fmt"
-	"github.com/zhangel/go-framework/declare"
-	internal_config "github.com/zhangel/go-framework/internal/config"
-	"github.com/zhangel/go-framework/lifecycle"
-	//framework_logger "github.com/zhangel/go-framework/log"
-	"go.uber.org/automaxprocs/maxprocs"
 	"log"
 	"os"
 	"os/signal"
+	"runtime"
+	"runtime/debug"
 	"sync"
 	"sync/atomic"
 	"syscall"
+	"time"
+
+	_ "github.com/zhangel/go-framework/balancer"
+	"github.com/zhangel/go-framework/config"
+	_ "github.com/zhangel/go-framework/config"
+	_ "github.com/zhangel/go-framework/config_plugins"
+	_ "github.com/zhangel/go-framework/control"
+	_ "github.com/zhangel/go-framework/control_plugins"
+	_ "github.com/zhangel/go-framework/credentials"
+	_ "github.com/zhangel/go-framework/db"
+	"github.com/zhangel/go-framework/declare"
+	internal_config "github.com/zhangel/go-framework/internal/config"
+	"github.com/zhangel/go-framework/lifecycle"
+	framework_logger "github.com/zhangel/go-framework/log"
+	_ "github.com/zhangel/go-framework/profile"
+	_ "github.com/zhangel/go-framework/prometheus"
+	_ "github.com/zhangel/go-framework/registry"
+	_ "github.com/zhangel/go-framework/retry"
+	_ "github.com/zhangel/go-framework/tracing"
+	"go.uber.org/automaxprocs/maxprocs"
 )
 
 var (
@@ -67,6 +84,25 @@ func Init(opt ...Option) func() {
 				lifecycle.Exit(1)
 			}
 		}()
+		memReleaseInterval := config.Int(flagIdleMemoryReleaseInterval)
+		forceGC := config.Bool(flagForceGC)
+		if memReleaseInterval > 0 {
+			if memReleaseInterval < 10 {
+				memReleaseInterval = 10
+			}
+			go func() {
+				for {
+					select {
+					case <-time.After(time.Duration(config.Int(flagIdleMemoryReleaseInterval)) * time.Second):
+						if forceGC {
+							runtime.GC()
+						}
+						debug.FreeOSMemory()
+						framework_logger.Debugf("Framework: free idle memory to os, forceGC = %v", forceGC)
+					}
+				}
+			}()
+		}
 		//framework_logger.Debugf("Framework: debug info opts=%+v", opts)
 		//log.Printf("%+v\n", opts.finalizeTimeout)
 		//config.Int(flagIdleMemoryReleaseInterval)

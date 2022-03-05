@@ -1,9 +1,10 @@
 package internal
 
 import (
+	"time"
+
 	"github.com/zhangel/go-framework/config/watcher"
 	"github.com/zhangel/go-framework/declare"
-	"time"
 )
 
 var ConfigPlugin = declare.PluginType{Name: "config"}
@@ -30,7 +31,7 @@ type Value interface {
 
 type Config interface {
 	Value
-	WithNameSpace(ns ...string) Config
+	WithNamespace(ns ...string) Config
 	WithPrefix(prefix string) Config
 	WithPassword(password ...string) Config
 	Watch(watcher.Watcher) (cancel func())

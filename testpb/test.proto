@@ -1,0 +1,25 @@
+syntax ="proto3";
+
+package test.pb;
+
+option go_package = "testpb";
+
+service TestApi {
+    rpc Unary (Request)
+        returns (Response) {}
+    rpc ServerSideStreaming (Request)
+        returns (stream Response) {}
+    rpc ClientSideStreaming (stream Request)
+        returns (Response) {}
+    rpc BidiSideStreaming (stream Request)
+        returns (stream Response) {}
+}
+
+message Request {
+    string data = 1;
+}
+
+message Response {
+    sint32 code = 1;
+    string data = 2;
+}

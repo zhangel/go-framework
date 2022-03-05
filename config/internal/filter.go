@@ -1,9 +1,10 @@
 package internal
 
 import (
-	"git-biz.qianxin-inc.cn/infra-components/sdk/microservice-framework/config-encryptor.git/lib"
 	"strings"
 	"sync"
+
+	"github.com/zhangel/go-framework/lib"
 )
 
 type Filter struct {

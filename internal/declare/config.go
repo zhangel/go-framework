@@ -3,57 +3,87 @@ package declare
 import (
 	"flag"
 	"fmt"
-	"github.com/xhit/go-str2duration/v2"
-	"github.com/zhangel/go-framework/internal"
-	"github.com/zhangel/go-framework/uri"
 	"log"
 	"os"
 	"regexp"
 	"strings"
 	"sync"
 	"time"
-)
 
-var (
-	allFlagsWithNs   = map[string][]Flag{}
-	FrameworkFlagSet = flag.NewFlagSet("", flag.ExitOnError)
-	AllFlags         = map[string]Flag{}
-	sensitiveMap     = map[string]struct{}{}
-	configOnce       sync.Once
+	"github.com/xhit/go-str2duration/v2"
+
+	"github.com/zhangel/go-framework/internal"
+	"github.com/zhangel/go-framework/uri"
 )
 
 const (
 	FlagOverwrite = "config.set"
 )
 
+var (
+	FrameworkFlagSet = flag.NewFlagSet("", flag.ExitOnError)
+	AllFlags         = map[string]Flag{}
+	allFlagsWithNs   = map[string][]Flag{}
+	sensitiveMap     = map[string]struct{}{}
+	configOnce       sync.Once
+)
+
 type MapFlags map[string]string
+
+func (s *MapFlags) String() string {
+	return fmt.Sprintf("%v", *s)
+}
+
+func (s *MapFlags) Set(value string) error {
+	pair := strings.Split(value, "=")
+	if len(pair) != 2 || pair[0] == "" {
+		return fmt.Errorf("invalid config value type")
+	}
+
+	(*s)[pair[0]] = pair[1]
+	return nil
+}
 
 var overwriteFlags = MapFlags{}
 
 type durationValue time.Duration
 
+func (d *durationValue) Set(s string) error {
+	v, err := str2duration.ParseDuration(s)
+	if err != nil {
+		return err
+	}
+	*d = durationValue(v)
+	return err
+}
+
+func (d *durationValue) Get() interface{} { return time.Duration(*d) }
+
+func (d *durationValue) String() string { return (*time.Duration)(d).String() }
+
 type Flag struct {
-	Name             string
-	DefaultValue     interface{}
-	Description      string
-	Env              string
-	UriField         uri.UriFieldType
-	UriFieldHandler  func(string) string
-	Sensitive        bool
-	Deprecated       bool
-	pluginTypeFlag   bool
+	Name            string
+	DefaultValue    interface{}
+	Description     string
+	Env             string
+	UriField        uri.UriFieldType
+	UriFieldHandler func(string) string
+	Sensitive       bool
+	Deprecated      bool
+
+	pluginFlagType   bool
 	pluginType       string
 	pluginName       string
 	pluginDeprecated bool
 }
 
-type ModifiableConfigSource interface {
-	Get(k string) (interface{}, error)
-	Put(k string, v interface{})
-}
-
 func Flags(ns string, flags ...Flag) {
 	allFlagsWithNs[ns] = append(allFlagsWithNs[ns], flags...)
+}
+
+type ModifiableConfigSource interface {
+	Get(k string) (interface{}, bool)
+	Put(k string, v interface{})
 }
 
 func PopulateAllFlags(source ModifiableConfigSource, flagsToShow, flagsToHide []string) {
@@ -151,42 +181,18 @@ func PopulateAllFlags(source ModifiableConfigSource, flagsToShow, flagsToHide []
 }
 
 func setDefaultValue(source ModifiableConfigSource, flagName string, defaultVal interface{}) {
-
 	if source == nil {
 		return
 	}
 
-	//if
-	//res, ok := source.Get(flagName)
-	//fmt.Printf("res=%v|ok=%v\n", res, ok)
-	//; ok {
-	//		return
-	//	}
+	if _, ok := source.Get(flagName); ok {
+		return
+	}
 
 	source.Put(flagName, internal.Stringify(defaultVal))
 }
 
-func (s *MapFlags) Set(value string) error {
-	pair := strings.Split(value, "=")
-	if len(pair) != 2 || pair[0] == "" {
-		return fmt.Errorf("invalid config value type")
-	}
-
-	(*s)[pair[0]] = pair[1]
-	return nil
-}
-
-func (d *durationValue) Set(s string) error {
-	v, err := str2duration.ParseDuration(s)
-	if err != nil {
-		return err
-	}
-	*d = durationValue(v)
-	return err
-}
-
-func (d *durationValue) String() string { return (*time.Duration)(d).String() }
-
-func (s *MapFlags) String() string {
-	return fmt.Sprintf("%v", *s)
+func IsSensitive(flagName string) bool {
+	_, ok := sensitiveMap[flagName]
+	return ok
 }

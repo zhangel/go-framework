@@ -13,8 +13,8 @@ type PrefixTree struct {
 	separator     string
 	prefixCache   map[string][]string
 	prefixCacheMu sync.Mutex
-	mu            sync.RWMutex
 	m             map[string]*PrefixTreeNode
+	mu            sync.RWMutex
 }
 
 type PrefixTreeNode struct {
