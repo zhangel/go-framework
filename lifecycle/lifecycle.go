@@ -3,14 +3,15 @@ package lifecycle
 import (
 	"context"
 	//"fmt"
-	"github.com/ahmetb/go-linq/v3"
-	"github.com/zhangel/go-framework/utils"
 	"log"
 	"os"
 	"reflect"
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/ahmetb/go-linq/v3"
+	"github.com/zhangel/go-framework.git/utils"
 )
 
 var (

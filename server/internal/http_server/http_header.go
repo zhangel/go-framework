@@ -10,7 +10,7 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc/metadata"
 
-	framework_http "github.com/zhangel/go-framework/http"
+	framework_http "github.com/zhangel/go-framework.git/http"
 )
 
 const (

@@ -6,7 +6,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/zhangel/go-framework/log"
+	"github.com/zhangel/go-framework.git/log"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/naming"

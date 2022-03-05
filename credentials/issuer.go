@@ -4,7 +4,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/zhangel/go-framework/certificate"
+	"github.com/zhangel/go-framework.git/certificate"
 )
 
 type IssuerPool struct {

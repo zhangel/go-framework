@@ -7,13 +7,13 @@ import (
 	"os"
 	"strings"
 
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/config_plugins"
-	"github.com/zhangel/go-framework/di"
-	"github.com/zhangel/go-framework/internal/declare"
-	"github.com/zhangel/go-framework/lifecycle"
-	"github.com/zhangel/go-framework/plugin"
-	"github.com/zhangel/go-framework/uri"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/config_plugins"
+	"github.com/zhangel/go-framework.git/di"
+	"github.com/zhangel/go-framework.git/internal/declare"
+	"github.com/zhangel/go-framework.git/lifecycle"
+	"github.com/zhangel/go-framework.git/plugin"
+	"github.com/zhangel/go-framework.git/uri"
 )
 
 var (

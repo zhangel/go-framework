@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/zhangel/go-framework/log"
+	"github.com/zhangel/go-framework.git/log"
 
 	"google.golang.org/grpc/health/grpc_health_v1"
 )

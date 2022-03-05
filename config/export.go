@@ -4,8 +4,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/zhangel/go-framework/config/internal"
-	"github.com/zhangel/go-framework/config/watcher"
+	"github.com/zhangel/go-framework.git/config/internal"
+	"github.com/zhangel/go-framework.git/config/watcher"
 )
 
 type Source internal.Source

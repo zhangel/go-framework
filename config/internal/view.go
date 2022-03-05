@@ -6,7 +6,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/zhangel/go-framework/config/watcher"
+	"github.com/zhangel/go-framework.git/config/watcher"
 )
 
 type ValueGetter interface {

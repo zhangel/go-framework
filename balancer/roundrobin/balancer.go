@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/zhangel/go-framework/balancer"
-	"github.com/zhangel/go-framework/balancer/picker"
+	"github.com/zhangel/go-framework.git/balancer"
+	"github.com/zhangel/go-framework.git/balancer/picker"
 )
 
 type options struct {

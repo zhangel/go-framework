@@ -14,10 +14,10 @@ import (
 	"google.golang.org/grpc/peer"
 	"google.golang.org/grpc/status"
 
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/internal"
-	"github.com/zhangel/go-framework/log"
-	"github.com/zhangel/go-framework/stream"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/internal"
+	"github.com/zhangel/go-framework.git/log"
+	"github.com/zhangel/go-framework.git/stream"
 )
 
 var nilTransportStream = &NilTransportStream{}

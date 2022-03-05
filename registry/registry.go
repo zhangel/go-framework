@@ -5,12 +5,12 @@ import (
 	"log"
 	"sync"
 
-	"github.com/zhangel/go-framework/lifecycle"
+	"github.com/zhangel/go-framework.git/lifecycle"
 
 	"google.golang.org/grpc/naming"
 
-	"github.com/zhangel/go-framework/declare"
-	"github.com/zhangel/go-framework/plugin"
+	"github.com/zhangel/go-framework.git/declare"
+	"github.com/zhangel/go-framework.git/plugin"
 )
 
 var (

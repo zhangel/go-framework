@@ -1,7 +1,7 @@
 package declare
 
 import (
-	"github.com/zhangel/go-framework/internal/declare"
+	"github.com/zhangel/go-framework.git/internal/declare"
 )
 
 type Flag declare.Flag

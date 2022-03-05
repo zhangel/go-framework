@@ -8,12 +8,12 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/zhangel/go-framework/utils"
+	"github.com/zhangel/go-framework.git/utils"
 
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/declare"
-	"github.com/zhangel/go-framework/lifecycle"
-	"github.com/zhangel/go-framework/log"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/declare"
+	"github.com/zhangel/go-framework.git/lifecycle"
+	"github.com/zhangel/go-framework.git/log"
 )
 
 const (

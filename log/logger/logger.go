@@ -2,9 +2,9 @@ package logger
 
 import (
 	"context"
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/log/fields"
-	"github.com/zhangel/go-framework/log/level"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/log/fields"
+	"github.com/zhangel/go-framework.git/log/level"
 	"time"
 )
 

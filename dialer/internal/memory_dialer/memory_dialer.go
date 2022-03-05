@@ -3,10 +3,10 @@ package memory_dialer
 import (
 	"context"
 
-	"github.com/zhangel/go-framework/dialer/internal/option"
-	"github.com/zhangel/go-framework/lifecycle"
-	"github.com/zhangel/go-framework/memory_registry"
-	"github.com/zhangel/go-framework/tracing"
+	"github.com/zhangel/go-framework.git/dialer/internal/option"
+	"github.com/zhangel/go-framework.git/lifecycle"
+	"github.com/zhangel/go-framework.git/memory_registry"
+	"github.com/zhangel/go-framework.git/tracing"
 
 	"google.golang.org/grpc"
 )

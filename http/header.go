@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/zhangel/go-framework/utils"
+	"github.com/zhangel/go-framework.git/utils"
 )
 
 const (

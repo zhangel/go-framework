@@ -7,7 +7,7 @@ import (
 
 	"github.com/natefinch/npipe"
 
-	"github.com/zhangel/go-framework/server/internal/option"
+	"github.com/zhangel/go-framework.git/server/internal/option"
 )
 
 func Listen(addr string, minPort, maxPort int) (net.Listener, error) {

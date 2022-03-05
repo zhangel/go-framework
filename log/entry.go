@@ -3,12 +3,12 @@ package log
 import (
 	"context"
 	"fmt"
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/lifecycle"
-	"github.com/zhangel/go-framework/log/entry"
-	"github.com/zhangel/go-framework/log/fields"
-	"github.com/zhangel/go-framework/log/level"
-	"github.com/zhangel/go-framework/log/logger"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/lifecycle"
+	"github.com/zhangel/go-framework.git/log/entry"
+	"github.com/zhangel/go-framework.git/log/fields"
+	"github.com/zhangel/go-framework.git/log/level"
+	"github.com/zhangel/go-framework.git/log/logger"
 	"sync/atomic"
 	"time"
 )

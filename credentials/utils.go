@@ -8,7 +8,7 @@ import (
 	"strings"
 	"unicode/utf8"
 
-	"github.com/zhangel/go-framework/utils"
+	"github.com/zhangel/go-framework.git/utils"
 )
 
 var (

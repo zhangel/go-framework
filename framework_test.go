@@ -3,10 +3,10 @@ package framework
 import (
 	//	"context"
 	//"fmt"
-	//"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/log"
-	//"github.com/zhangel/go-framework/log/fields"
-	//"github.com/zhangel/go-framework/log/level"
+	//"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/log"
+	//"github.com/zhangel/go-framework.git/log/fields"
+	//"github.com/zhangel/go-framework.git/log/level"
 	"testing"
 	"time"
 )

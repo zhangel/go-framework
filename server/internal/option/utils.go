@@ -7,16 +7,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/zhangel/go-framework/server/internal/grpc_reflection"
+	"github.com/zhangel/go-framework.git/server/internal/grpc_reflection"
 
-	"github.com/zhangel/go-framework/authentication"
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/credentials"
-	"github.com/zhangel/go-framework/healthy"
-	"github.com/zhangel/go-framework/log"
-	"github.com/zhangel/go-framework/registry"
-	"github.com/zhangel/go-framework/server/internal"
-	"github.com/zhangel/go-framework/tracing"
+	"github.com/zhangel/go-framework.git/authentication"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/credentials"
+	"github.com/zhangel/go-framework.git/healthy"
+	"github.com/zhangel/go-framework.git/log"
+	"github.com/zhangel/go-framework.git/registry"
+	"github.com/zhangel/go-framework.git/server/internal"
+	"github.com/zhangel/go-framework.git/tracing"
 )
 
 const pemPrefix = "-----BEGIN"

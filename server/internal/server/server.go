@@ -11,20 +11,20 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/zhangel/go-framework/lifecycle"
+	"github.com/zhangel/go-framework.git/lifecycle"
 
 	"github.com/soheilhy/cmux"
 	"google.golang.org/grpc"
 	_ "google.golang.org/grpc/encoding/gzip"
 
-	"github.com/zhangel/go-framework/log"
-	"github.com/zhangel/go-framework/memory_registry"
-	"github.com/zhangel/go-framework/server/internal"
-	"github.com/zhangel/go-framework/server/internal/grpc_server"
-	"github.com/zhangel/go-framework/server/internal/http_server"
-	"github.com/zhangel/go-framework/server/internal/option"
-	"github.com/zhangel/go-framework/server/internal/service"
-	"github.com/zhangel/go-framework/utils"
+	"github.com/zhangel/go-framework.git/log"
+	"github.com/zhangel/go-framework.git/memory_registry"
+	"github.com/zhangel/go-framework.git/server/internal"
+	"github.com/zhangel/go-framework.git/server/internal/grpc_server"
+	"github.com/zhangel/go-framework.git/server/internal/http_server"
+	"github.com/zhangel/go-framework.git/server/internal/option"
+	"github.com/zhangel/go-framework.git/server/internal/service"
+	"github.com/zhangel/go-framework.git/utils"
 )
 
 type Server struct {

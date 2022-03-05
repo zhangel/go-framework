@@ -1,9 +1,9 @@
 package log
 
 import (
-	"github.com/zhangel/go-framework/log/encoder"
-	"github.com/zhangel/go-framework/log/logger"
-	"github.com/zhangel/go-framework/log/writer"
+	"github.com/zhangel/go-framework.git/log/encoder"
+	"github.com/zhangel/go-framework.git/log/logger"
+	"github.com/zhangel/go-framework.git/log/writer"
 )
 
 func NewConsoleLogger(stdout bool) func() (logger.Logger, error) {

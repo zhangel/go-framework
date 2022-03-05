@@ -3,9 +3,9 @@ package log
 import (
 	"context"
 	//"fmt"
-	"github.com/zhangel/go-framework/lifecycle"
-	"github.com/zhangel/go-framework/log/fields"
-	"github.com/zhangel/go-framework/log/logger"
+	"github.com/zhangel/go-framework.git/lifecycle"
+	"github.com/zhangel/go-framework.git/log/fields"
+	"github.com/zhangel/go-framework.git/log/logger"
 )
 
 var (

@@ -3,11 +3,11 @@ package http_server
 import (
 	"net/http"
 
-	http2 "github.com/zhangel/go-framework/http"
-	"github.com/zhangel/go-framework/log"
-	"github.com/zhangel/go-framework/registry"
-	"github.com/zhangel/go-framework/server/internal/option"
-	"github.com/zhangel/go-framework/utils"
+	http2 "github.com/zhangel/go-framework.git/http"
+	"github.com/zhangel/go-framework.git/log"
+	"github.com/zhangel/go-framework.git/registry"
+	"github.com/zhangel/go-framework.git/server/internal/option"
+	"github.com/zhangel/go-framework.git/utils"
 )
 
 type ServiceDesc struct {

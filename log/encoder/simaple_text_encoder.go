@@ -2,7 +2,7 @@ package encoder
 
 import (
 	"fmt"
-	"github.com/zhangel/go-framework/log/entry"
+	"github.com/zhangel/go-framework.git/log/entry"
 	"path/filepath"
 	"strings"
 )

@@ -2,8 +2,8 @@ package log
 
 import (
 	"errors"
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/log/logger"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/log/logger"
 )
 
 type _Logger struct {

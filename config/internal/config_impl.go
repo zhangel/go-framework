@@ -2,8 +2,8 @@ package internal
 
 import (
 	"fmt"
-	"github.com/zhangel/go-framework/config/watcher"
-	"github.com/zhangel/go-framework/utils"
+	"github.com/zhangel/go-framework.git/config/watcher"
+	"github.com/zhangel/go-framework.git/utils"
 	"log"
 	"strings"
 	"sync"

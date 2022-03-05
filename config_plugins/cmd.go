@@ -3,8 +3,8 @@ package config_plugins
 import (
 	"flag"
 
-	"github.com/zhangel/go-framework/config/watcher"
-	"github.com/zhangel/go-framework/internal/declare"
+	"github.com/zhangel/go-framework.git/config/watcher"
+	"github.com/zhangel/go-framework.git/internal/declare"
 )
 
 type CmdConfigSource struct{}

@@ -4,7 +4,7 @@ package option
 
 import (
 	"github.com/zhangel/go-framewor/server/internal"
-	"github.com/zhangel/go-framework/declare"
+	"github.com/zhangel/go-framework.git/declare"
 )
 
 var AddrFlag = declare.Flag{Name: internal.FlagAddr, DefaultValue: internal.AutoSelectAddr, Description: "Bind address of the grpc server. optionals: address, 'auto'."}

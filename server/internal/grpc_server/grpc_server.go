@@ -10,17 +10,17 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health/grpc_health_v1"
 
-	"github.com/zhangel/go-framework/circuit_breaker"
-	"github.com/zhangel/go-framework/hooks"
-	"github.com/zhangel/go-framework/lifecycle"
-	"github.com/zhangel/go-framework/log"
-	"github.com/zhangel/go-framework/prometheus"
-	"github.com/zhangel/go-framework/rate_limit"
-	"github.com/zhangel/go-framework/server/internal"
-	"github.com/zhangel/go-framework/server/internal/option"
-	"github.com/zhangel/go-framework/server/internal/server_list"
-	"github.com/zhangel/go-framework/timeout"
-	"github.com/zhangel/go-framework/utils"
+	"github.com/zhangel/go-framework.git/circuit_breaker"
+	"github.com/zhangel/go-framework.git/hooks"
+	"github.com/zhangel/go-framework.git/lifecycle"
+	"github.com/zhangel/go-framework.git/log"
+	"github.com/zhangel/go-framework.git/prometheus"
+	"github.com/zhangel/go-framework.git/rate_limit"
+	"github.com/zhangel/go-framework.git/server/internal"
+	"github.com/zhangel/go-framework.git/server/internal/option"
+	"github.com/zhangel/go-framework.git/server/internal/server_list"
+	"github.com/zhangel/go-framework.git/timeout"
+	"github.com/zhangel/go-framework.git/utils"
 )
 
 type Server struct {

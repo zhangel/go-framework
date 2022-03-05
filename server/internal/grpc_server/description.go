@@ -6,14 +6,14 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/http"
-	"github.com/zhangel/go-framework/lifecycle"
-	"github.com/zhangel/go-framework/log"
-	"github.com/zhangel/go-framework/memory_registry"
-	"github.com/zhangel/go-framework/registry"
-	"github.com/zhangel/go-framework/server/internal/option"
-	"github.com/zhangel/go-framework/server/internal/service"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/http"
+	"github.com/zhangel/go-framework.git/lifecycle"
+	"github.com/zhangel/go-framework.git/log"
+	"github.com/zhangel/go-framework.git/memory_registry"
+	"github.com/zhangel/go-framework.git/registry"
+	"github.com/zhangel/go-framework.git/server/internal/option"
+	"github.com/zhangel/go-framework.git/server/internal/service"
 )
 
 type ServiceDesc struct {

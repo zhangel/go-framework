@@ -1,7 +1,7 @@
 package framework
 
 import (
-	"github.com/zhangel/go-framework/config"
+	"github.com/zhangel/go-framework.git/config"
 	"time"
 )
 

@@ -3,8 +3,8 @@ package route
 import (
 	"github.com/gorilla/mux"
 
-	"github.com/zhangel/go-framework/server"
-	"github.com/zhangel/go-framework/server/internal/http_server"
+	"github.com/zhangel/go-framework.git/server"
+	"github.com/zhangel/go-framework.git/server/internal/http_server"
 )
 
 func Path(tpl string) server.Route {

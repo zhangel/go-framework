@@ -7,9 +7,9 @@ import (
 
 	"google.golang.org/grpc"
 
-	"github.com/zhangel/go-framework/credentials"
-	"github.com/zhangel/go-framework/dialer/internal/option"
-	"github.com/zhangel/go-framework/registry"
+	"github.com/zhangel/go-framework.git/credentials"
+	"github.com/zhangel/go-framework.git/dialer/internal/option"
+	"github.com/zhangel/go-framework.git/registry"
 )
 
 func Dial(ctx context.Context, target string, dialOpts *option.DialOptions) (*grpc.ClientConn, error) {

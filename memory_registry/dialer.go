@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/zhangel/go-framework/connection"
-	"github.com/zhangel/go-framework/interceptor"
-	"github.com/zhangel/go-framework/log"
+	"github.com/zhangel/go-framework.git/connection"
+	"github.com/zhangel/go-framework.git/interceptor"
+	"github.com/zhangel/go-framework.git/log"
 
 	"github.com/modern-go/reflect2"
 	"google.golang.org/grpc"

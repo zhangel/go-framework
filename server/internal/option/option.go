@@ -14,14 +14,14 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/keepalive"
 
-	"github.com/zhangel/go-framework/authentication"
-	"github.com/zhangel/go-framework/credentials"
-	"github.com/zhangel/go-framework/healthy"
-	"github.com/zhangel/go-framework/hooks"
-	"github.com/zhangel/go-framework/registry"
-	server_internal "github.com/zhangel/go-framework/server/internal"
-	"github.com/zhangel/go-framework/server/internal/service"
-	"github.com/zhangel/go-framework/tracing"
+	"github.com/zhangel/go-framework.git/authentication"
+	"github.com/zhangel/go-framework.git/credentials"
+	"github.com/zhangel/go-framework.git/healthy"
+	"github.com/zhangel/go-framework.git/hooks"
+	"github.com/zhangel/go-framework.git/registry"
+	server_internal "github.com/zhangel/go-framework.git/server/internal"
+	"github.com/zhangel/go-framework.git/server/internal/service"
+	"github.com/zhangel/go-framework.git/tracing"
 )
 
 type Options struct {

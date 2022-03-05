@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"github.com/zhangel/go-framework/config/watcher"
+	"github.com/zhangel/go-framework.git/config/watcher"
 	"strings"
 	"sync"
 	"sync/atomic"

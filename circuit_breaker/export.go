@@ -4,10 +4,10 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/zhangel/go-framework/control"
-	"github.com/zhangel/go-framework/hooks"
-	"github.com/zhangel/go-framework/log"
-	"github.com/zhangel/go-framework/utils"
+	"github.com/zhangel/go-framework.git/control"
+	"github.com/zhangel/go-framework.git/hooks"
+	"github.com/zhangel/go-framework.git/log"
+	"github.com/zhangel/go-framework.git/utils"
 
 	"github.com/cep21/circuit/v3"
 	cmap "github.com/orcaman/concurrent-map"

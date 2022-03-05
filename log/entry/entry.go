@@ -1,8 +1,8 @@
 package entry
 
 import (
-	"github.com/zhangel/go-framework/log/fields"
-	"github.com/zhangel/go-framework/log/level"
+	"github.com/zhangel/go-framework.git/log/fields"
+	"github.com/zhangel/go-framework.git/log/level"
 	"runtime"
 	"time"
 )

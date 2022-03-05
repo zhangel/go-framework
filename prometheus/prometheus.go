@@ -15,16 +15,16 @@ import (
 
 	"github.com/modern-go/reflect2"
 
-	"github.com/zhangel/go-framework/utils"
+	"github.com/zhangel/go-framework.git/utils"
 
 	grpc_prometheus "github.com/grpc-ecosystem/go-grpc-prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"google.golang.org/grpc"
 
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/declare"
-	"github.com/zhangel/go-framework/lifecycle"
-	"github.com/zhangel/go-framework/log"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/declare"
+	"github.com/zhangel/go-framework.git/lifecycle"
+	"github.com/zhangel/go-framework.git/log"
 )
 
 const (

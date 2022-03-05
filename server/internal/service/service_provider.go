@@ -6,11 +6,11 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/zhangel/go-framework/config"
-	"github.com/zhangel/go-framework/db"
-	"github.com/zhangel/go-framework/log"
-	"github.com/zhangel/go-framework/log/logger"
-	"github.com/zhangel/go-framework/plugin"
+	"github.com/zhangel/go-framework.git/config"
+	"github.com/zhangel/go-framework.git/db"
+	"github.com/zhangel/go-framework.git/log"
+	"github.com/zhangel/go-framework.git/log/logger"
+	"github.com/zhangel/go-framework.git/plugin"
 )
 
 type Provider interface {
